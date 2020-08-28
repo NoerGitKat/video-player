@@ -43,7 +43,6 @@ video {
 .show-controls {
   width: 100%;
   height: 30%;
-  background: dodgerblue;
   z-index: 2;
   position: absolute;
   bottom: 0;
@@ -61,6 +60,13 @@ video {
   z-index: 5;
   display: flex;
   justify-content: space-between;
+  opacity: 0;
+  transition: opacity 0.4s ease-out 2s;
+}
+
+.show-controls:hover .controls-container {
+  opacity: 1;
+  transition: 0.4s ease-out;
 }
 
 .control-group {
@@ -81,12 +87,20 @@ video {
 
 /* Progress Bar */
 .progress-range {
+  height: 8px;
+  width: calc(100% - 30px);
+  background: rgba(206, 200, 213, 0.5);
   margin: auto;
   border-radius: 10px;
   position: absolute;
   left: 15px;
   top: 15px;
   cursor: pointer;
+  transition: height 0.2s ease-in-out;
+}
+
+.progress-range:hover {
+  height: 10px;
 }
 
 .progress-bar {
@@ -162,6 +176,7 @@ video {
 
 select {
   color: var(--font-color);
+  background-color: transparent;
   border: none;
   font-size: 18px;
   position: relative;
@@ -169,10 +184,18 @@ select {
   border-radius: 5px;
 }
 
+select:focus {
+  outline: none;
+}
+
 select > option {
   background: rgba(0, 0, 0, 0.9);
   border: none;
   font-size: 14px;
+}
+select,
+option {
+  cursor: pointer;
 }
 
 /* Elapsed Time & Duration */
